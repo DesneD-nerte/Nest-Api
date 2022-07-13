@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DataSource, Repository } from "typeorm";
+import CreateUserDto from "./dto/create-user.dto";
 import { User } from "./user.entity";
 
 @Injectable()
@@ -26,23 +27,24 @@ export class UsersService {
     }
 
 
-    async createMany(users: User[]) {
-        // const queryRunner = this.dataSource.createQueryRunner();
-
-        // await queryRunner.connect();
-        // await queryRunner.startTransaction();
-
-        // try {
-        //     await queryRunner.manager.save(users[0]);
-        //     await queryRunner.manager.save(users[1]);
-
-        //     await queryRunner.commitTransaction();
-        // } catch (err) {
-        //     await queryRunner.rollbackTransaction();
-        // } finally {
-        //     await queryRunner.release();
-        // }
-
+    async createMany(createUsersDto: CreateUserDto[]) {
+        const users = new Array<User> ();
         
+        for (const createUserDto of createUsersDto) {
+            const user = new User();
+
+            for (const property in createUserDto) {
+                if (Object.prototype.hasOwnProperty.call(createUserDto, property)) {
+                    user[property] = createUserDto[property];
+                }
+            }
+            users.push(user);
+        }
+
+        await this.dataSource.transaction(async (manager) => {
+            for (const user of users) {
+                await manager.save(user);
+            }
+        })
     }
 }

@@ -5,16 +5,30 @@ import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
+
+import { User } from './users/user.entity';
+import { UserPhoto } from './userPhotos/userPhoto.entity';
+import { Item } from './items/item.entity';
+import { Pants } from './pants/pants.entity';
+import { ItemsModule } from './items/items.module';
 
 
 @Module({
 	controllers: [AppController],
 	providers: [AppService],
 	imports: [
+		ConfigModule.forRoot({
+			isGlobal: true,
+			load: [configuration]
+		}),
+		
 		CatsModule,
 		UsersModule,
+		ItemsModule,
+
 		TypeOrmModule.forRoot({
 			type: 'postgres',
 			host: 'localhost',
@@ -22,7 +36,7 @@ import { UsersModule } from './users/users.module';
 			username: 'postgres',
 			password: '1234',
 			database: 'postgres',
-			entities: [User],
+			entities: [User, UserPhoto, Item, Pants],
 			
 			autoLoadEntities: true,
 			synchronize: true,

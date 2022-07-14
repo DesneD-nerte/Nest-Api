@@ -1,5 +1,9 @@
 import { Item } from "../items/item.entity";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, OneToMany } from "typeorm";
+import { PantsPhoto } from "../photos/pants-photo.entity";
 
 @Entity()
-export class Pants extends Item {}
+export class Pants extends Item {
+    @OneToMany((type) => PantsPhoto, (pantsPhoto) => pantsPhoto.pants)
+    photos: PantsPhoto[]
+}

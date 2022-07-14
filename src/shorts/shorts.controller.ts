@@ -3,7 +3,7 @@ import { DataSource } from "typeorm";
 import { Shorts } from "./shorts.entity";
 import { ShortsService } from "./shorts.service";
 
-@Controller('items/pants')
+@Controller('items/shorts')
 export class ShortsController {
     constructor(private shortsService: ShortsService) {}
     

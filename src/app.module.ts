@@ -15,6 +15,7 @@ import { Item } from './items/item.entity';
 import { Pants } from './pants/pants.entity';
 import { ItemsModule } from './items/items.module';
 import { Photo } from './photos/photo.entity';
+import { FileModule } from './file/file.module';
 
 
 @Module({
@@ -26,6 +27,7 @@ import { Photo } from './photos/photo.entity';
 			load: [configuration]
 		}),
 		
+		FileModule,
 		CatsModule,
 		UsersModule,
 		ItemsModule,

@@ -2,12 +2,13 @@ import { Injectable, StreamableFile } from "@nestjs/common";
 import { PantsPhoto } from "src/photos/pants-photo.entity";
 import { DataSource } from "typeorm";
 import { Pants } from "./pants.entity";
-import * as fs from "fs";
-import { join } from "path";
+import { FileService } from "src/file/file.service";
+import CreatePantsDto from "./dto/create-pants.dto"
 
 @Injectable()
 export class PantsService {
-    constructor(private dataSource: DataSource) {}
+    constructor(private dataSource: DataSource,
+        private fileService: FileService) {}
 
     async getAll() {
         return await this.dataSource.manager.find(Pants);
@@ -29,31 +30,29 @@ export class PantsService {
         return arrayUrl;
     }
 
-    // getOneImage(id: number, imageId: number): StreamableFile {
-    //     const file = fs.createReadStream(join(process.cwd(), `src/pants/images/${id}/image/${imageId}.jpg`));
+    async createNew(createPantsDto: CreatePantsDto, file: Express.Multer.File) {
+        // const pants = new Pants();
+        // const photoPants = new PantsPhoto();
+        // photoPants.name = "Hello";
+        // photoPants.createdAt = new Date();
+        // photoPants.url = "http://localhost:3000/items/pants/2/image/2";
 
-    //     console.log(file);
+        // pants.name = "Gold Coll";
+        // pants.color = "Green";
+        // pants.gender = "Women";
+        // pants.size = "40x";
+        // pants.available = true;
+        // pants.photos = [photoPants];
 
-    //     return new StreamableFile(file);
-    // }
-
-    async createNew(newPants: Pants) {
-        const pants = new Pants();
+        const imagePath = this.fileService.createFile(file);
         const photoPants = new PantsPhoto();
-        photoPants.name = "Hello";
-        photoPants.createdAt = new Date();
-        photoPants.url = "http://localhost:3000/items/pants/2/image/2";
-
-        pants.name = "Gold Coll";
-        pants.color = "Green";
-        pants.gender = "Women";
-        pants.size = "40x";
-        pants.available = true;
-        pants.photos = [photoPants];
+        photoPants.name = file.originalname;
+        photoPants.url = imagePath;
 
         await this.dataSource.transaction( async (manager) => {
+            photoPants.pants = await manager.getRepository(Pants).save(createPantsDto);
+            // await manager.save(createPantsDto);
             await manager.save(photoPants);
-            // await manager.save(pants);
         })
     }
 }

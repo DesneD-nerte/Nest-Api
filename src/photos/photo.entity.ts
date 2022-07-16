@@ -8,8 +8,8 @@ export class Photo {
     @Column()
     name: string;
 
-    @Column()
-    createdAt: Date;
+    // @Column()
+    // createdAt: Date;
 
     @Column()
     url: string

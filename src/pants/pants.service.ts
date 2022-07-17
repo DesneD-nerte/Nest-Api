@@ -31,19 +31,6 @@ export class PantsService {
     }
 
     async createNew(createPantsDto: CreatePantsDto, file: Express.Multer.File) {
-        // const pants = new Pants();
-        // const photoPants = new PantsPhoto();
-        // photoPants.name = "Hello";
-        // photoPants.createdAt = new Date();
-        // photoPants.url = "http://localhost:3000/items/pants/2/image/2";
-
-        // pants.name = "Gold Coll";
-        // pants.color = "Green";
-        // pants.gender = "Women";
-        // pants.size = "40x";
-        // pants.available = true;
-        // pants.photos = [photoPants];
-
         const imagePath = this.fileService.createFile(file);
         const photoPants = new PantsPhoto();
         photoPants.name = file.originalname;
@@ -51,7 +38,6 @@ export class PantsService {
 
         await this.dataSource.transaction( async (manager) => {
             photoPants.pants = await manager.getRepository(Pants).save(createPantsDto);
-            // await manager.save(createPantsDto);
             await manager.save(photoPants);
         })
     }

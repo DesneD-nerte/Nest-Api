@@ -16,6 +16,8 @@ import { Pants } from './pants/pants.entity';
 import { ItemsModule } from './items/items.module';
 import { Photo } from './photos/photo.entity';
 import { FileModule } from './file/file.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import * as path from 'path';
 
 
 @Module({
@@ -26,6 +28,10 @@ import { FileModule } from './file/file.module';
 			isGlobal: true,
 			load: [configuration]
 		}),
+
+		ServeStaticModule.forRoot({
+			rootPath: path.resolve(__dirname, 'static'),
+		  }),
 		
 		FileModule,
 		CatsModule,

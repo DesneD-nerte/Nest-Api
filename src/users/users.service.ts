@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DataSource, Repository } from "typeorm";
 import CreateUserDto from "./dto/create-user.dto";
 import { User } from "./user.entity";
+import bcrypt from "bcryptjs";
 
 @Injectable()
 export class UsersService {
@@ -26,18 +27,20 @@ export class UsersService {
         await this.usersRepository.delete(id);
     }
 
+    async createOne(createUserDto: CreateUserDto) {
+        const user = new User(createUserDto);
+
+        await this.dataSource.transaction(async (manager) => {
+            await manager.save(user);
+        })
+    }
 
     async createMany(createUsersDto: CreateUserDto[]) {
         const users = new Array<User> ();
         
         for (const createUserDto of createUsersDto) {
-            const user = new User();
+            const user = new User(createUserDto);
 
-            for (const property in createUserDto) {
-                if (Object.prototype.hasOwnProperty.call(createUserDto, property)) {
-                    user[property] = createUserDto[property];
-                }
-            }
             users.push(user);
         }
 

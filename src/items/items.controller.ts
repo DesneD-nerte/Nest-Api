@@ -5,11 +5,6 @@ import { ItemsService } from "./items.service";
 export class ItemsController {
     constructor(private itemsService: ItemsService) {}
 
-    // @Get()
-    // async findAll() {
-    //     return await this.itemsService.getAll();
-    // }
-
     @Get()
     async findBySearch(@Query('search') search: string) {
         if(!search) {

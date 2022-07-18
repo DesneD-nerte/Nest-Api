@@ -18,6 +18,9 @@ export class User {
     @Column()
     password: string;
 
+    @Column()
+    email: string;
+
     @Column({ default: true})
     isActive: boolean
 
@@ -28,6 +31,7 @@ export class User {
         if(createUserDto) {
             this.firstName = createUserDto.firstName;
             this.lastName = createUserDto.lastName;
+            this.email = createUserDto.email;
             this.password = this.#generateHashPassword(createUserDto.password);
         }
     }

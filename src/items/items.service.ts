@@ -13,7 +13,6 @@ export class ItemsService {
     }
 
     async getBySearch(search: string) {
-        // return await this.dataSource.manager.find(Pants, {where: {name: Like(`${search}%`)}});
         const pantsRepository = this.dataSource.getRepository(Pants);
         return await pantsRepository.find({relations: {photos: true}, where: {name: Like(`${search}%`)}})
     }

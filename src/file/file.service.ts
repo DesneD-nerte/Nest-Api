@@ -17,7 +17,10 @@ export class FileService {
             }
             fs.writeFileSync(path.resolve(filePath, fileName), file.buffer);
 
-            return fileName;
+            const filePathDB = "items/pants/" + fileName;
+
+            // return fileName;
+            return filePathDB;
         } catch(e) {
             throw new HttpException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
         }

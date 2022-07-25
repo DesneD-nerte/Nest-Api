@@ -4,12 +4,13 @@ import { PantsModule } from "src/pants/pants.module";
 import { ShortsModule } from "src/shorts/shorts.module";
 import { Item } from "./item.entity";
 import { ItemsController } from "./items.controller";
+import { ItemsRepository } from "./items.repository";
 import { ItemsService } from "./items.service";
 
 @Module({
     imports: [TypeOrmModule.forFeature([Item]), PantsModule, ShortsModule],
     controllers: [ItemsController],
-    providers: [ItemsService],
+    providers: [ItemsService, ItemsRepository],
     // exports: [ItemsService]
 })
 export class ItemsModule {}

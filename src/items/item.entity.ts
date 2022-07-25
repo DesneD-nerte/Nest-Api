@@ -9,6 +9,9 @@ export abstract class Item {
     name: string;
 
     @Column()
+    description: string;
+
+    @Column()
     size: string;
 
     @Column()

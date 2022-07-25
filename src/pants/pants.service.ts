@@ -11,7 +11,7 @@ export class PantsService {
         private fileService: FileService) {}
 
     async getAll() {
-        return await this.dataSource.manager.find(Pants);
+        return await this.dataSource.manager.find(Pants, {relations: {photos: true}});
     }
 
     async getOneImages(id: number) {

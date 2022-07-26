@@ -23,8 +23,10 @@ export class UsersService {
         return this.usersRepository.findOneBy({ id });
     }
 
-    async remove (id: number): Promise<void> {
-        await this.usersRepository.delete(id);
+    async removeOne (id: number) {
+        const deleteResult = await this.usersRepository.delete(id);
+
+        return deleteResult;
     }
 
     async createOne(createUserDto: CreateUserDto) {
@@ -33,6 +35,8 @@ export class UsersService {
         await this.dataSource.transaction(async (manager) => {
             await manager.save(user);
         })
+
+        return user;
     }
 
     async createMany(createUsersDto: CreateUserDto[]) {
@@ -49,5 +53,7 @@ export class UsersService {
                 await manager.save(user);
             }
         })
+
+        return users;
     }
 }

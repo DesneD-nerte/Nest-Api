@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Res } from "@nestjs/common";
+import { Response } from "express";
 import CreateUserDto from "./dto/create-user.dto";
 import { UsersService } from "./users.service";
 
@@ -7,22 +8,30 @@ export class UsersController {
     constructor(private usersService: UsersService) {}
 
     @Get('/')
-    async getUsers() {
-        return this.usersService.findAll();
+    async getUsers(@Res() res: Response) {
+        const result = await this.usersService.findAll();
+
+        res.setHeader("Content-Range", result.length);
+        res.json(result);
     }
 
     @Get(':id')
     async getUser(@Param('id', ParseIntPipe) id: number) {
-        return this.getUser(id);
+        return await this.usersService.findOne(id);
     }
 
-    @Post('/createOne')
+    @Post('/')
     async createUser(@Body() createUserDto: CreateUserDto) {
-        await this.usersService.createOne(createUserDto);
+        return await this.usersService.createOne(createUserDto);
     }
 
-    @Post('/createMany')
+    @Post('/')
     async createUsers(@Body() createUsersDto: CreateUserDto[]) {
-        await this.usersService.createMany(createUsersDto);
+        return await this.usersService.createMany(createUsersDto);
+    }
+
+    @Delete(':id')
+    async deleteUser(@Param('id', ParseIntPipe) id: number) {
+        return await this.usersService.removeOne(id);
     }
 }

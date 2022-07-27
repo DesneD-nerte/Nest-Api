@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Res, StreamableFile, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Query, Res, StreamableFile, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { DataSource } from "typeorm";
 import { Pants } from "./pants.entity";
 import { PantsService } from "./pants.service";
@@ -12,8 +12,8 @@ export class PantsController {
     constructor(private pantsService: PantsService) {}
     
     @Get()
-    findAll() {
-        return this.pantsService.getAll();
+    findAll(@Query('limit') limit: number = null) {
+        return this.pantsService.getAll(limit);
     }
 
     @Get(':id/image')

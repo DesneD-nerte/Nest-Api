@@ -8,11 +8,11 @@ export class ItemsService {
     constructor(private dataSource: DataSource,
         private pantsService: PantsService, private itemsRepository: ItemsRepository) {}
 
-    async getAll() {
-        return await this.pantsService.getAll();
+    async getAll(limit: number) {
+        return await this.pantsService.getAll(limit);
     }
 
-    async getBySearch(search: string) {
-        return await this.itemsRepository.getFromAllBySearch(search);
+    async getBySearch(search: string, limit: number) {
+        return await this.itemsRepository.getFromAllBySearch(search, limit);
     }
 }

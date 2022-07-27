@@ -22,4 +22,7 @@ export abstract class Item {
 
     @Column()
     available: boolean;
+
+    @Column()
+    url: string;
 }

@@ -10,8 +10,8 @@ export class PantsService {
     constructor(private dataSource: DataSource,
         private fileService: FileService) {}
 
-    async getAll() {
-        return await this.dataSource.manager.find(Pants, {relations: {photos: true}});
+    async getAll(limit: number) {
+        return await this.dataSource.manager.find(Pants, {relations: {photos: true}, take: limit});
     }
 
     async getOneImages(id: number) {

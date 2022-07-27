@@ -18,6 +18,7 @@ import { Photo } from './photos/photo.entity';
 import { FileModule } from './file/file.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
+import { PantsPromoModule } from './pants-promo/pants-promo.module';
 
 
 @Module({
@@ -37,6 +38,7 @@ import * as path from 'path';
 		CatsModule,
 		UsersModule,
 		ItemsModule,
+		PantsPromoModule,
 
 		TypeOrmModule.forRoot({
 			type: 'postgres',

@@ -31,7 +31,7 @@ export class PantsService {
     }
 
     async createNew(createPantsDto: CreatePantsDto, file: Express.Multer.File) {
-        const imagePath = this.fileService.createFile(file);
+        const imagePath = this.fileService.createFile(file, "pants");
         const photoPants = new PantsPhoto();
         photoPants.name = file.originalname;
         photoPants.url = imagePath;

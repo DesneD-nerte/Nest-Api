@@ -5,19 +5,19 @@ import * as uuid from "uuid";
 
 @Injectable()
 export class FileService {
-    createFile(file): string {
+    createFile(file, entity: string): string {
         try {
             console.log(file);
             const fileExtension = file.originalname.split(".").pop();
             const fileName = uuid.v4() + "." + fileExtension;
-            const filePath = path.resolve(__dirname, "../static/items/pants");
+            const filePath = path.resolve(__dirname, `../static/items/${entity}`);
 
             if(!fs.existsSync(filePath)) {
                 fs.mkdirSync(filePath, {recursive: true});
             }
             fs.writeFileSync(path.resolve(filePath, fileName), file.buffer);
 
-            const filePathDB = "items/pants/" + fileName;
+            const filePathDB = `items/${entity}/` + fileName;
 
             // return fileName;
             return filePathDB;

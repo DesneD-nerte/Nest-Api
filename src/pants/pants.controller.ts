@@ -6,12 +6,14 @@ import * as fs from "fs";
 import { join } from "path";
 import CreatePantsDto from "./dto/create-pants.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { GetListInterceptor } from "src/interceptors/getList.interceptor";
 
 @Controller('items/pants')
 export class PantsController {
     constructor(private pantsService: PantsService) {}
     
     @Get()
+    @UseInterceptors(GetListInterceptor)
     findAll(@Query('limit') limit: number = null) {
         return this.pantsService.getAll(limit);
     }

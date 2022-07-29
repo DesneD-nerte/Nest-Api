@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Pants } from "../pants/pants.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, RelationId } from "typeorm";
 import CreatePantsPromoDto from "./dto/create-pants-promo.dto";
 
 @Entity()
@@ -13,16 +14,20 @@ export class PantsPromo {
     description: string;
 
     @Column()
-    url: string;
-
-    @Column()
     imageUrl: string
+
+    @OneToOne(() => Pants)
+    @JoinColumn({name: "pantsId"})
+    pants: Pants
+
+    @Column({nullable: false})
+    pantsId: number
+
 
     constructor(createPantsPromoDto?: CreatePantsPromoDto) {
         if(createPantsPromoDto) {
             this.name = createPantsPromoDto.name;
             this.description = createPantsPromoDto.description;
-            this.url = createPantsPromoDto.url;
         }
     }
 }

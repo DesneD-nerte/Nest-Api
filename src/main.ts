@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 const corsOptions: CorsOptions = {
   exposedHeaders: ["Content-Range"],
-  origin: 'http://localhost:3000'
+  origin: ['http://localhost:3000', 'http://localhost:3001'],
 }
 
 async function bootstrap() {

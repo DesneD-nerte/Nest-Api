@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FileService } from 'src/file/file.service';
+import { Pants } from 'src/pants/pants.entity';
 import { DataSource } from 'typeorm';
 import CreatePantsPromoDto from './dto/create-pants-promo.dto';
 import { PantsPromo } from './pants-promo.entity';
@@ -16,6 +17,7 @@ export class PantsPromoService {
         const imagePath = this.fileService.createFile(file, "PantsPromo");
         const pantsPromo = new PantsPromo(createPantsPromoDto);
         pantsPromo.imageUrl = imagePath;
+        pantsPromo.pantsId = createPantsPromoDto.pantsId;
 
         await this.dataSource.transaction( async (manager) => {
             await manager.save(pantsPromo);

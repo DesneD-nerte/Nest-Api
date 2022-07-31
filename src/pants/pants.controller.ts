@@ -14,8 +14,12 @@ export class PantsController {
     
     @Get()
     @UseInterceptors(GetListInterceptor)
-    findAll(@Query('limit') limit: number = null) {
-        return this.pantsService.getAll(limit);
+    findAll(@Query('sort') sort: string,
+        @Query('range') range: string, 
+        @Query('filter') filter: string,
+        @Query('limit') limit: number) {
+           
+            return this.pantsService.getAll(sort, range, filter, limit);
     }
 
     @Get(':id/image')

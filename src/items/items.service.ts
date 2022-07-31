@@ -9,7 +9,7 @@ export class ItemsService {
         private pantsService: PantsService, private itemsRepository: ItemsRepository) {}
 
     async getAll(limit: number) {
-        return await this.pantsService.getAll(limit);
+        return await this.pantsService.getAll();
     }
 
     async getBySearch(search: string, limit: number) {

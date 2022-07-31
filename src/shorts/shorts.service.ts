@@ -16,7 +16,7 @@ export class ShortsService {
         pants.name = "Gold Coll";
         pants.color = "Green";
         pants.gender = "Women";
-        pants.size = "40x";
+        pants.size = 40;
         pants.available = true;
 
         await this.dataSource.transaction( async (manager) => {

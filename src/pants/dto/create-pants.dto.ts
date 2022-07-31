@@ -1,7 +1,7 @@
 export default class CreatePantsDto {
     name: string;
     description: string
-    size: string;
+    size: number;
     color: string;
     gender: string;
     available: boolean;

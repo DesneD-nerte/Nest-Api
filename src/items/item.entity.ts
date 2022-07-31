@@ -12,7 +12,7 @@ export abstract class Item {
     description: string;
 
     @Column()
-    size: string;
+    size: number;
 
     @Column()
     color: string;

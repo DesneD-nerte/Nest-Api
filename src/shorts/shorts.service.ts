@@ -1,13 +1,14 @@
 import { Injectable } from "@nestjs/common";
+import { ParamsService } from "src/params/params.service";
 import { DataSource } from "typeorm";
 import { Shorts } from "./shorts.entity";
 
 @Injectable()
 export class ShortsService {
-    constructor(private dataSource: DataSource) {}
+    constructor(private dataSource: DataSource, private paramsService: ParamsService) {}
 
-    async getAll() {
-        return await this.dataSource.manager.find(Shorts);
+    async getAll(sort: string = undefined, range: string = undefined, filter: string = undefined, limit: number = undefined) {
+        return await this.paramsService.GetList(Shorts, sort, range, filter, limit);
     }
 
     async createNew() {

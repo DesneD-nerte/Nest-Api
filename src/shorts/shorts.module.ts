@@ -5,10 +5,11 @@ import { ShortsPhoto } from "src/photos/shorts-photo.entity";
 import { ShortsController } from "./shorts.controller";
 import { Shorts } from "./shorts.entity";
 import { ShortsService } from "./shorts.service";
+import { ParamsService } from "src/params/params.service";
 
 @Module({
     imports: [TypeOrmModule.forFeature([Item, Shorts, ShortsPhoto])],
-    providers: [ShortsService],
+    providers: [ShortsService, ParamsService],
     controllers: [ShortsController],
     exports: [ShortsService]
 })

@@ -1,24 +1,31 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CatsController } from './cats/cats.controller';
-import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './logger.middleware';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
-import { ConfigModule } from '@nestjs/config';
+
+import * as path from 'path';
 import configuration from './config/configuration';
+
+import { UsersModule } from './users/users.module';
+import { ItemsModule } from './items/items.module';
+import { FileModule } from './file/file.module';
+import { PantsPromoModule } from './pants-promo/pants-promo.module';
+import { ShortsPromoModule } from './shorts-promo/shorts-promo.module';
 
 import { User } from './users/user.entity';
 import { UserPhoto } from './userPhotos/userPhoto.entity';
 import { Item } from './items/item.entity';
 import { Pants } from './pants/pants.entity';
-import { ItemsModule } from './items/items.module';
 import { Photo } from './photos/photo.entity';
-import { FileModule } from './file/file.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import * as path from 'path';
-import { PantsPromoModule } from './pants-promo/pants-promo.module';
+import { PantsPromo } from './pants-promo/pants-promo.entity';
+import { Shorts } from './shorts/shorts.entity';
+import { ShortsPromo } from './shorts-promo/shorts-promo.entity';
+import { ShortsPhoto } from './photos/shorts-photo.entity';
+import { PantsPhoto } from './photos/pants-photo.entity';
 
 
 @Module({
@@ -35,10 +42,10 @@ import { PantsPromoModule } from './pants-promo/pants-promo.module';
 		  }),
 		
 		FileModule,
-		CatsModule,
 		UsersModule,
 		ItemsModule,
 		PantsPromoModule,
+		ShortsPromoModule,
 
 		TypeOrmModule.forRoot({
 			type: 'postgres',
@@ -47,7 +54,7 @@ import { PantsPromoModule } from './pants-promo/pants-promo.module';
 			username: 'postgres',
 			password: '1234',
 			database: 'postgres',
-			entities: [User, UserPhoto, Item, Pants],
+			entities: [User, UserPhoto, Item, Pants, Shorts, PantsPhoto, ShortsPhoto, PantsPromo, ShortsPromo],
 			
 			autoLoadEntities: true,
 			synchronize: true,
@@ -58,6 +65,6 @@ export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
 	consumer
 		.apply(LoggerMiddleware)
-		.forRoutes(CatsController)
+		// .forRoutes(CatsController)
 	}
 }

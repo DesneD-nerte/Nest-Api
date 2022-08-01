@@ -19,7 +19,7 @@ export class PantsController {
         @Query('filter') filter: string,
         @Query('limit') limit: number) {
            
-            return this.pantsService.getAll(sort, range, filter, limit);
+            return this.pantsService.getAll({sort, range, filter, limit});
     }
 
     @Get(':id/image')

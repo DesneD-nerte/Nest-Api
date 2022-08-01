@@ -5,14 +5,15 @@ import { Pants } from "./pants.entity";
 import { FileService } from "src/file/file.service";
 import CreatePantsDto from "./dto/create-pants.dto"
 import { ParamsService } from "src/params/params.service";
+import { IGetParams } from "src/interfaces/IGetParams";
 
 @Injectable()
 export class PantsService {
     constructor(private dataSource: DataSource,
         private fileService: FileService, private paramsService: ParamsService) {}
 
-    async getAll(sort: string = undefined, range: string = undefined, filter: string = undefined, limit: number = undefined) {
-        return await this.paramsService.GetList(Pants, sort, range, filter, limit);
+    async getAll(params: IGetParams) {
+        return await this.paramsService.GetList(Pants, params.sort, params.range, params.filter, params.limit);
     }
 
     async getOneImages(id: number) {

@@ -15,7 +15,7 @@ export class ShortsController {
         @Query('filter') filter: string,
         @Query('limit') limit: number) {
             
-        return this.shortsService.getAll(sort, range, filter, limit);
+        return this.shortsService.getAll({sort, range, filter, limit});
     }
 
     @Post()

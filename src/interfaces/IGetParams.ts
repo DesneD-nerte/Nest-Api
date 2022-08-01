@@ -4,3 +4,4 @@ export interface IGetParams {
     filter?: string,
     limit?: number,
 }
+

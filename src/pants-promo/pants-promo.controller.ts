@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post, Res, UploadedFile, UseInterceptors } from 
 import { PantsPromoService } from './pants-promo.service';
 import { FileInterceptor } from "@nestjs/platform-express";
 import CreatePantsPromoDto from './dto/create-pants-promo.dto';
-import { Response } from 'express';
 import { GetListInterceptor } from '../interceptors/getList.interceptor';
 
 @Controller('pants-promo')

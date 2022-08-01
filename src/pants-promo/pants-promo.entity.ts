@@ -30,4 +30,8 @@ export class PantsPromo {
             this.description = createPantsPromoDto.description;
         }
     }
+
+    setId(id: number) {
+        this.pantsId = id;
+    }
 }

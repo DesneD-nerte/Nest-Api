@@ -17,11 +17,11 @@ export class ShortsPromo {
     imageUrl: string
 
     @OneToOne(() => Shorts)
-    @JoinColumn({name: "pantsId"})
+    @JoinColumn({name: "shortsId"})
     shorts: Shorts
 
     @Column({nullable: false})
-    pantsId: number
+    shortsId: number
 
 
     constructor(createShortsPromoDto?: CreateShortsPromoDto) {
@@ -29,5 +29,9 @@ export class ShortsPromo {
             this.name = createShortsPromoDto.name;
             this.description = createShortsPromoDto.description;
         }
+    }
+
+    setId(id: number) {
+        this.shortsId = id;
     }
 }

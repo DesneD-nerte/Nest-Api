@@ -26,6 +26,7 @@ import { Shorts } from './shorts/shorts.entity';
 import { ShortsPromo } from './shorts-promo/shorts-promo.entity';
 import { ShortsPhoto } from './photos/shorts-photo.entity';
 import { PantsPhoto } from './photos/pants-photo.entity';
+import { PromoModule } from './promo/promo.module';
 
 
 @Module({
@@ -44,6 +45,7 @@ import { PantsPhoto } from './photos/pants-photo.entity';
 		FileModule,
 		UsersModule,
 		ItemsModule,
+		PromoModule,//
 		PantsPromoModule,
 		ShortsPromoModule,
 

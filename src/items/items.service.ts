@@ -14,7 +14,7 @@ export class ItemsService {
         const allPants = await this.pantsService.getAll({limit})
         const allShorts = await this.shortsService.getAll({limit});
 
-        return [allPants, allShorts];
+        return [...allPants, ...allShorts];
     }
 
     async getBySearch(search: string, limit: number) {

@@ -1,37 +1,36 @@
 import { Shorts } from "../shorts/shorts.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, RelationId } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  RelationId,
+} from "typeorm";
 import CreateShortsPromoDto from "./dto/create-shorts-promo.dto";
 
 @Entity()
 export class ShortsPromo {
-    @PrimaryGeneratedColumn()
-    id: number;
+  id: number;
 
-    @Column()
-    name: string;
+  name: string;
 
-    @Column()
-    description: string;
+  description: string;
 
-    @Column()
-    imageUrl: string
+  imageUrl: string;
 
-    @OneToOne(() => Shorts)
-    @JoinColumn({name: "shortsId"})
-    shorts: Shorts
+  shorts: Shorts;
 
-    @Column({nullable: false})
-    shortsId: number
+  shortsId: number;
 
-
-    constructor(createShortsPromoDto?: CreateShortsPromoDto) {
-        if(createShortsPromoDto) {
-            this.name = createShortsPromoDto.name;
-            this.description = createShortsPromoDto.description;
-        }
+  constructor(createShortsPromoDto?: CreateShortsPromoDto) {
+    if (createShortsPromoDto) {
+      this.name = createShortsPromoDto.name;
+      this.description = createShortsPromoDto.description;
     }
+  }
 
-    setId(id: number) {
-        this.shortsId = id;
-    }
+  setId(id: number) {
+    this.shortsId = id;
+  }
 }

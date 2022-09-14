@@ -5,20 +5,26 @@ import { DataSource, Like } from "typeorm";
 
 @Injectable()
 export class ItemsRepository {
-    constructor(private dataSource: DataSource) {}
+  constructor(private dataSource: DataSource) {}
 
-    async getFromAllBySearch(search: string, limit: number) {
-        const allPants = await this.dataSource.manager.find(Pants, {relations: {photos: true}, where: [
-            {name: Like(`%${search}%`)},
-            {description: Like(`%${search}%`)}
-        ],
-            take: limit});
-        const allShort = await this.dataSource.manager.find(Shorts, {relations: {photos: true}, where: [
-            {name: Like(`%${search}%`)},
-            {description: Like(`%${search}%`)}
-        ],
-            take: limit});
+  async getFromAllBySearch(search: string, limit: number) {
+    const allPants = await this.dataSource.manager.find(Pants, {
+      relations: { photos: true },
+      where: [
+        { name: Like(`%${search}%`) },
+        { description: Like(`%${search}%`) },
+      ],
+      take: limit,
+    });
+    const allShort = await this.dataSource.manager.find(Shorts, {
+      relations: { photos: true },
+      where: [
+        { name: Like(`%${search}%`) },
+        { description: Like(`%${search}%`) },
+      ],
+      take: limit,
+    });
 
-        return [...allPants, ...allShort];
-    }
+    return [...allPants, ...allShort];
+  }
 }

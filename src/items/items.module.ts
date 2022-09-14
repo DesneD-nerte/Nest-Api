@@ -8,9 +8,9 @@ import { ItemsRepository } from "./items.repository";
 import { ItemsService } from "./items.service";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Item]), PantsModule, ShortsModule],
-    controllers: [ItemsController],
-    providers: [ItemsService, ItemsRepository],
-    exports: [ItemsService]
+  imports: [TypeOrmModule.forFeature([Item]), PantsModule, ShortsModule],
+  controllers: [ItemsController],
+  providers: [ItemsService, ItemsRepository],
+  exports: [ItemsService],
 })
 export class ItemsModule {}

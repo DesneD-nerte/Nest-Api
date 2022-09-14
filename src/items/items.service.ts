@@ -6,18 +6,21 @@ import { ItemsRepository } from "./items.repository";
 
 @Injectable()
 export class ItemsService {
-    constructor(private dataSource: DataSource,
-        private pantsService: PantsService, private shortsService: ShortsService,
-        private itemsRepository: ItemsRepository) {}
+  constructor(
+    private dataSource: DataSource,
+    private pantsService: PantsService,
+    private shortsService: ShortsService,
+    private itemsRepository: ItemsRepository
+  ) {}
 
-    async getAll(limit: number) {
-        const allPants = await this.pantsService.getAll({limit})
-        const allShorts = await this.shortsService.getAll({limit});
+  async getAll(limit: number) {
+    const allPants = await this.pantsService.getAll({ limit });
+    const allShorts = await this.shortsService.getAll({ limit });
 
-        return [...allPants, ...allShorts];
-    }
+    return [...allPants, ...allShorts];
+  }
 
-    async getBySearch(search: string, limit: number) {
-        return await this.itemsRepository.getFromAllBySearch(search, limit);
-    }
+  async getBySearch(search: string, limit: number) {
+    return await this.itemsRepository.getFromAllBySearch(search, limit);
+  }
 }

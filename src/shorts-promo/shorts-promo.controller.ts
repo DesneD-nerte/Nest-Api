@@ -1,23 +1,37 @@
-import { Body, Controller, Get, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
-import { ShortsPromoService } from './shorts-promo.service';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Res,
+  UploadedFile,
+  UseInterceptors,
+} from "@nestjs/common";
+import { ShortsPromoService } from "./shorts-promo.service";
 import { FileInterceptor } from "@nestjs/platform-express";
-import CreatePantsPromoDto from './dto/create-shorts-promo.dto';
-import { Response } from 'express';
-import { GetListInterceptor } from '../interceptors/getList.interceptor';
+import CreatePantsPromoDto from "./dto/create-shorts-promo.dto";
+import { Response } from "express";
+import { GetListInterceptor } from "../interceptors/getList.interceptor";
 
-@Controller('shorts-promo')
+@Controller("shorts-promo")
 export class ShortsPromoController {
-    constructor(private pantsPromoService: ShortsPromoService) {}
+  constructor(private pantsPromoService: ShortsPromoService) {}
 
-    @Get()
-    @UseInterceptors(GetListInterceptor)
-    async getAllPantsPromo() {
-        return await this.pantsPromoService.getAllShortsPromo();
-    }
+  @Get()
+  @UseInterceptors(GetListInterceptor)
+  async getAllPantsPromo() {
+    return await this.pantsPromoService.getAllShortsPromo();
+  }
 
-    @Post()
-    @UseInterceptors(FileInterceptor('file'))
-    async createNew(@UploadedFile() file: Express.Multer.File, @Body() createPantsPromoDto: CreatePantsPromoDto) {
-        return await this.pantsPromoService.addNewShortsPromo(createPantsPromoDto, file);
-    }
+  @Post()
+  @UseInterceptors(FileInterceptor("file"))
+  async createNew(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() createPantsPromoDto: CreatePantsPromoDto
+  ) {
+    return await this.pantsPromoService.addNewShortsPromo(
+      createPantsPromoDto,
+      file
+    );
+  }
 }

@@ -1,37 +1,36 @@
 import { Pants } from "../pants/pants.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, RelationId } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  RelationId,
+} from "typeorm";
 import CreatePantsPromoDto from "./dto/create-pants-promo.dto";
 
 @Entity()
 export class PantsPromo {
-    @PrimaryGeneratedColumn()
-    id: number;
+  id: number;
 
-    @Column()
-    name: string;
+  name: string;
 
-    @Column()
-    description: string;
+  description: string;
 
-    @Column()
-    imageUrl: string
+  imageUrl: string;
 
-    @OneToOne(() => Pants)
-    @JoinColumn({name: "pantsId"})
-    pants: Pants
+  pants: Pants;
 
-    @Column({nullable: false})
-    pantsId: number
+  pantsId: number;
 
-
-    constructor(createPantsPromoDto?: CreatePantsPromoDto) {
-        if(createPantsPromoDto) {
-            this.name = createPantsPromoDto.name;
-            this.description = createPantsPromoDto.description;
-        }
+  constructor(createPantsPromoDto?: CreatePantsPromoDto) {
+    if (createPantsPromoDto) {
+      this.name = createPantsPromoDto.name;
+      this.description = createPantsPromoDto.description;
     }
+  }
 
-    setId(id: number) {
-        this.pantsId = id;
-    }
+  setId(id: number) {
+    this.pantsId = id;
+  }
 }

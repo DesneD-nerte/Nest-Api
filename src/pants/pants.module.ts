@@ -9,9 +9,9 @@ import { Pants } from "./pants.entity";
 import { PantsService } from "./pants.service";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Item, Pants, PantsPhoto])],
-    providers: [PantsService, FileService, ParamsService],
-    controllers: [PantsController],
-    exports: [PantsService]
+  imports: [TypeOrmModule.forFeature([Item, Pants, PantsPhoto])],
+  providers: [PantsService, FileService, ParamsService],
+  controllers: [PantsController],
+  exports: [PantsService],
 })
 export class PantsModule {}

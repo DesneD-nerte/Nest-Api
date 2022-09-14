@@ -3,18 +3,13 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class UserPhoto {
-    @PrimaryGeneratedColumn()
-    id: number;
+  id: number;
 
-    @Column()
-    name: string;
+  name: string;
 
-    @Column()
-    createdAt: Date;
+  createdAt: Date;
 
-    @Column()
-    url: string
+  url: string;
 
-    @ManyToOne((type) => User, (user) => user.photos)
-    user: User
+  user: User;
 }

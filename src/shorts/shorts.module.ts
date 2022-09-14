@@ -8,9 +8,9 @@ import { ShortsService } from "./shorts.service";
 import { ParamsService } from "src/params/params.service";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Item, Shorts, ShortsPhoto])],
-    providers: [ShortsService, ParamsService],
-    controllers: [ShortsController],
-    exports: [ShortsService]
+  imports: [TypeOrmModule.forFeature([Item, Shorts, ShortsPhoto])],
+  providers: [ShortsService, ParamsService],
+  controllers: [ShortsController],
+  exports: [ShortsService],
 })
 export class ShortsModule {}

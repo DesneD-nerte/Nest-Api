@@ -1,3 +1,3 @@
 export interface ICreatePromo {
-    entity: string;
+  entity: string;
 }

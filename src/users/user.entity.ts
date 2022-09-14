@@ -5,41 +5,33 @@ import * as bcrypt from "bcryptjs";
 
 @Entity()
 export class User {
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  firstName: string;
 
-    @Column()
-    firstName: string;
+  lastName: string;
 
-    @Column()
-    lastName: string;
+  password: string;
 
-    @Column()
-    password: string;
+  email: string;
 
-    @Column()
-    email: string;
+  isActive: boolean;
 
-    @Column({ default: true})
-    isActive: boolean
+  photos: UserPhoto[];
 
-    @OneToMany((type) => UserPhoto, (photo) => photo.user)
-    photos: UserPhoto[]
-
-    constructor(createUserDto?: CreateUserDto) {
-        if(createUserDto) {
-            this.firstName = createUserDto.firstName;
-            this.lastName = createUserDto.lastName;
-            this.email = createUserDto.email;
-            this.password = this.#generateHashPassword(createUserDto.password);
-        }
+  constructor(createUserDto?: CreateUserDto) {
+    if (createUserDto) {
+      this.firstName = createUserDto.firstName;
+      this.lastName = createUserDto.lastName;
+      this.email = createUserDto.email;
+      this.password = this.#generateHashPassword(createUserDto.password);
     }
+  }
 
-    #generateHashPassword(password: string) {
-        var salt = bcrypt.genSaltSync();
-        var hash = bcrypt.hashSync(password, salt);
-        
-        return hash;
-    }
+  #generateHashPassword(password: string) {
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync(password, salt);
+
+    return hash;
+  }
 }

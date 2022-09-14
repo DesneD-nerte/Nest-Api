@@ -5,18 +5,25 @@ import * as bcrypt from "bcryptjs";
 
 @Entity()
 export class User {
+  @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
   firstName: string;
 
+  @Column()
   lastName: string;
 
+  @Column()
   password: string;
 
+  @Column()
   email: string;
 
+  @Column()
   isActive: boolean;
 
+  @OneToMany((type) => UserPhoto, (photo) => photo.user)
   photos: UserPhoto[];
 
   constructor(createUserDto?: CreateUserDto) {

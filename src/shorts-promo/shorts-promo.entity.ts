@@ -11,16 +11,23 @@ import CreateShortsPromoDto from "./dto/create-shorts-promo.dto";
 
 @Entity()
 export class ShortsPromo {
+  @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
   name: string;
 
+  @Column()
   description: string;
 
+  @Column()
   imageUrl: string;
 
+  @OneToOne(() => Shorts)
+  @JoinColumn({ name: "shortsId" })
   shorts: Shorts;
 
+  @Column({ nullable: false })
   shortsId: number;
 
   constructor(createShortsPromoDto?: CreateShortsPromoDto) {

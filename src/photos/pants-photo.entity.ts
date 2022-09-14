@@ -4,5 +4,6 @@ import { Photo } from "./photo.entity";
 
 @Entity()
 export class PantsPhoto extends Photo {
+  @ManyToOne((type) => Pants, (pants) => pants.photos)
   pants: Pants;
 }

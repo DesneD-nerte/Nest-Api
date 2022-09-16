@@ -41,14 +41,8 @@ export class PantsController {
   }
 
   @Get(":id/image/:imageId")
-  findOneImage(
-    @Param("id") id: number,
-    @Param("imageId") imageId: number,
-    @Res() res
-  ) {
-    res.sendFile(
-      join(process.cwd(), `src/pants/images/${id}/image/${imageId}.jpg`)
-    );
+  findOneImage(@Param("id") id: number, @Param("imageId") imageId: number, @Res() res) {
+    res.sendFile(join(process.cwd(), `src/pants/images/${id}/image/${imageId}.jpg`));
   }
 
   @Post()

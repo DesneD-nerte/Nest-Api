@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Res,
-  UploadedFile,
-  UseInterceptors,
-} from "@nestjs/common";
+import { Body, Controller, Get, Post, Res, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { ShortsPromoService } from "./shorts-promo.service";
 import { FileInterceptor } from "@nestjs/platform-express";
 import CreatePantsPromoDto from "./dto/create-shorts-promo.dto";
@@ -29,9 +21,6 @@ export class ShortsPromoController {
     @UploadedFile() file: Express.Multer.File,
     @Body() createPantsPromoDto: CreatePantsPromoDto
   ) {
-    return await this.pantsPromoService.addNewShortsPromo(
-      createPantsPromoDto,
-      file
-    );
+    return await this.pantsPromoService.addNewShortsPromo(createPantsPromoDto, file);
   }
 }

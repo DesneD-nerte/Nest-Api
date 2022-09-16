@@ -13,15 +13,8 @@ export class ShortsPromoService extends PromoService<ShortsPromo> {
     return await this.getAllPromo(ShortsPromo);
   }
 
-  async addNewShortsPromo(
-    createShortsPromoDto: CreateShortsPromoDto,
-    file: Express.Multer.File
-  ) {
+  async addNewShortsPromo(createShortsPromoDto: CreateShortsPromoDto, file: Express.Multer.File) {
     createShortsPromoDto.entity = "ShortsPromo";
-    return await this.addCreatePromoDto(
-      ShortsPromo,
-      createShortsPromoDto,
-      file
-    );
+    return await this.addCreatePromoDto(ShortsPromo, createShortsPromoDto, file);
   }
 }

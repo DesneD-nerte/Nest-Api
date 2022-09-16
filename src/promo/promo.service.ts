@@ -11,10 +11,7 @@ import { DataSource } from "typeorm";
 export class PromoService<T extends PantsPromo | ShortsPromo> {
   protected itemPromo: T;
 
-  constructor(
-    private dataSource: DataSource,
-    private fileService: FileService
-  ) {}
+  constructor(private dataSource: DataSource, private fileService: FileService) {}
 
   protected async getAllPromo<T>(itemPromoClass: new (...args: any[]) => T) {
     return await this.dataSource.manager.find<T>(itemPromoClass);

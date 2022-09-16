@@ -12,10 +12,7 @@ export class PantsPromoService extends PromoService<PantsPromo> {
     return await this.getAllPromo(PantsPromo);
   }
 
-  async addNewPantsPromo(
-    createPantsPromoDto: CreatePantsPromoDto,
-    file: Express.Multer.File
-  ) {
+  async addNewPantsPromo(createPantsPromoDto: CreatePantsPromoDto, file: Express.Multer.File) {
     createPantsPromoDto.entity = "PantsPromo";
     return await this.addCreatePromoDto(PantsPromo, createPantsPromoDto, file);
   }

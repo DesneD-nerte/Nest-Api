@@ -17,15 +17,15 @@ module.exports = {
   },
   ignorePatterns: [".eslintrc.js"],
   rules: {
-    "array-bracket-spacing": [
-      "error",
-      "always",
-      {
-        singleValue: false,
-        objectsInArrays: false,
-        arraysInArrays: false,
-      },
-    ],
+    // "array-bracket-spacing": [
+    //   "error",
+    //   "always",
+    //   {
+    //     singleValue: false,
+    //     objectsInArrays: false,
+    //     arraysInArrays: false,
+    //   },
+    // ],
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",

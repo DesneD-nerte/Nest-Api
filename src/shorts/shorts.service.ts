@@ -6,10 +6,7 @@ import { IGetParams } from "src/interfaces/IGetParams";
 
 @Injectable()
 export class ShortsService {
-  constructor(
-    private dataSource: DataSource,
-    private paramsService: ParamsService
-  ) {}
+  constructor(private dataSource: DataSource, private paramsService: ParamsService) {}
 
   async getAll(params: IGetParams) {
     return await this.paramsService.GetList(

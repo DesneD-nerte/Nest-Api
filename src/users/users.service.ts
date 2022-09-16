@@ -10,10 +10,7 @@ export class UsersService {
   private usersRepository: Repository<User>;
   private dataSource: DataSource;
 
-  constructor(
-    @InjectRepository(User) usersRepository: Repository<User>,
-    dataSource: DataSource
-  ) {
+  constructor(@InjectRepository(User) usersRepository: Repository<User>, dataSource: DataSource) {
     this.usersRepository = usersRepository;
     this.dataSource = dataSource;
   }
@@ -22,8 +19,15 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({ id });
+  async findOne(id: number): Promise<User>;
+
+  async findOne(email: string): Promise<User>;
+
+  async findOne(arg: number | string) {
+    const email = String(arg);
+    const id = Number(arg);
+
+    return await this.usersRepository.findOneBy([{ email } || { id }]);
   }
 
   async removeOne(id: number) {

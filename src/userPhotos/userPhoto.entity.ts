@@ -3,7 +3,9 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class UserPhoto {
+  @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   name: string;
 

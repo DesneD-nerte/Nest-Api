@@ -9,10 +9,7 @@ export class ItemsController {
 
   @Get("/")
   @UseInterceptors(GetListInterceptor)
-  async findBySearch(
-    @Query("search") search: string,
-    @Query("limit") limit: number
-  ) {
+  async findBySearch(@Query("search") search: string, @Query("limit") limit: number) {
     if (!search) {
       return await this.itemsService.getAll(limit);
     } else {

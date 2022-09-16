@@ -12,28 +12,28 @@ export class ParamsService {
     filter: string = undefined,
     limit: number = undefined
   ) {
-    const { stringSortArray, stringRangeArray, stringFilterArray } =
-      this.#fixSearchParams(sort, range, filter, limit);
+    const { stringSortArray, stringRangeArray, stringFilterArray } = this.fixSearchParams(
+      sort,
+      range,
+      filter,
+      limit
+    );
 
-    const whereBuilderString =
-      this.#buildDbWhereString(stringFilterArray).join("");
+    const whereBuilderString = this.buildDbWhereString(stringFilterArray).join("");
 
     return await this.dataSource
       .getRepository(Item)
       .createQueryBuilder("item")
       .innerJoinAndSelect("item.photos", `itemPhoto`)
       .where(whereBuilderString)
-      .orderBy(
-        `item.${stringSortArray[0]}`,
-        stringSortArray[1] as "DESC" | "ASC"
-      )
+      .orderBy(`item.${stringSortArray[0]}`, stringSortArray[1] as "DESC" | "ASC")
       .skip(Number.parseInt(stringRangeArray[0]))
       .take(Number.parseInt(stringRangeArray[1]))
       .limit(limit)
       .getMany();
   }
 
-  #fixSearchParams(sort: string, range: string, filter: string, limit: number) {
+  private fixSearchParams(sort: string, range: string, filter: string, limit: number) {
     sort = sort?.substring(1, sort.length - 1).replace(/[ '"]+/g, "");
     range = range?.substring(1, range.length - 1).replace(/[ ]+/g, "");
     filter = filter?.substring(1, filter.length - 1);
@@ -52,7 +52,7 @@ export class ParamsService {
     return { stringSortArray, stringRangeArray, stringFilterArray };
   }
 
-  #buildDbWhereString(stringFilterArray: string[]) {
+  private buildDbWhereString(stringFilterArray: string[]) {
     const objectFilterArray = [];
 
     if (stringFilterArray) {
@@ -61,22 +61,20 @@ export class ParamsService {
       }
     }
 
-    const whereBuilderArrayString = objectFilterArray.map(
-      (oneObject, index) => {
-        const propertyName = Object.keys(oneObject)[0];
+    const whereBuilderArrayString = objectFilterArray.map((oneObject, index) => {
+      const propertyName = Object.keys(oneObject)[0];
 
-        let returnResult = `item.${propertyName} = '${oneObject[propertyName]}'`;
+      let returnResult = `item.${propertyName} = '${oneObject[propertyName]}'`;
 
-        if (propertyName === "name") {
-          returnResult += ` OR item.description = '${oneObject[propertyName]}'`;
-        }
-        if (index !== objectFilterArray.length - 1) {
-          returnResult += " AND ";
-        }
-
-        return returnResult;
+      if (propertyName === "name") {
+        returnResult += ` OR item.description = '${oneObject[propertyName]}'`;
       }
-    );
+      if (index !== objectFilterArray.length - 1) {
+        returnResult += " AND ";
+      }
+
+      return returnResult;
+    });
 
     return whereBuilderArrayString;
   }

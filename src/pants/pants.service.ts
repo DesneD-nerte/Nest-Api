@@ -51,9 +51,7 @@ export class PantsService {
     photoPants.url = imagePath;
 
     await this.dataSource.transaction(async (manager) => {
-      photoPants.pants = await manager
-        .getRepository(Pants)
-        .save(createPantsDto);
+      photoPants.pants = await manager.getRepository(Pants).save(createPantsDto);
       await manager.save(photoPants);
     });
   }

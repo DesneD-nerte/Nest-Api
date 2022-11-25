@@ -3,7 +3,7 @@ import { ShortsPromoService } from "./shorts-promo.service";
 import { FileInterceptor } from "@nestjs/platform-express";
 import CreatePantsPromoDto from "./dto/create-shorts-promo.dto";
 import { Response } from "express";
-import { GetListInterceptor } from "../interceptors/getList.interceptor";
+import { GetListInterceptor } from "@interceptors/getList.interceptor";
 
 @Controller("shorts-promo")
 export class ShortsPromoController {

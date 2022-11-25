@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectDataSource } from "@nestjs/typeorm";
 import { FileService } from "src/file/file.service";
 import { ICreatePromo } from "src/interfaces/ICreatePromo";
-import { PantsPromo } from "src/pants-promo/pants-promo.entity";
+import { PantsPromo } from "src/promo/pants-promo/pants-promo.entity";
 import CreateShortsPromoDto from "src/shorts-promo/dto/create-shorts-promo.dto";
 import { ShortsPromo } from "src/shorts-promo/shorts-promo.entity";
 import { DataSource } from "typeorm";

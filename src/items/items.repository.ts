@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { Pants } from "src/pants/pants.entity";
-import { Shorts } from "src/shorts/shorts.entity";
+import { Pants } from "src/items/pants/pants.entity";
+import { Shorts } from "src/items/shorts/shorts.entity";
 import { DataSource, Like } from "typeorm";
 
 @Injectable()

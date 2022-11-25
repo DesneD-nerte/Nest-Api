@@ -1,4 +1,4 @@
-import { Pants } from "../pants/pants.entity";
+import { Pants } from "../../items/pants/pants.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, RelationId } from "typeorm";
 import CreatePantsPromoDto from "./dto/create-pants-promo.dto";
 

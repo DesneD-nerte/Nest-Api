@@ -13,20 +13,18 @@ import configuration from "./config/configuration";
 import { UsersModule } from "./users/users.module";
 import { ItemsModule } from "./items/items.module";
 import { FileModule } from "./file/file.module";
-import { PantsPromoModule } from "./pants-promo/pants-promo.module";
-import { ShortsPromoModule } from "./shorts-promo/shorts-promo.module";
 
 import { User } from "./users/user.entity";
 import { UserPhoto } from "./userPhotos/userPhoto.entity";
 import { Item } from "./items/item.entity";
-import { Pants } from "./pants/pants.entity";
+import { Pants } from "./items/pants/pants.entity";
 import { Photo } from "./photos/photo.entity";
-import { PantsPromo } from "./pants-promo/pants-promo.entity";
-import { Shorts } from "./shorts/shorts.entity";
-import { ShortsPromo } from "./shorts-promo/shorts-promo.entity";
+import { Shorts } from "./items/shorts/shorts.entity";
 import { ShortsPhoto } from "./photos/shorts-photo.entity";
 import { PantsPhoto } from "./photos/pants-photo.entity";
 import { PromoModule } from "./promo/promo.module";
+import { PantsPromo } from "./promo/pants-promo/pants-promo.entity";
+import { ShortsPromo } from "./promo/shorts-promo/shorts-promo.entity";
 
 @Module({
   controllers: [AppController],
@@ -45,8 +43,6 @@ import { PromoModule } from "./promo/promo.module";
     UsersModule,
     ItemsModule,
     PromoModule, //
-    PantsPromoModule,
-    ShortsPromoModule,
 
     TypeOrmModule.forRoot({
       type: "postgres",

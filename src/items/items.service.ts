@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { PantsService } from "src/pants/pants.service";
-import { ShortsService } from "src/shorts/shorts.service";
+import { PantsService } from "src/items/pants/pants.service";
+import { ShortsService } from "src/items/shorts/shorts.service";
 import { DataSource } from "typeorm";
 import { ItemsRepository } from "./items.repository";
 

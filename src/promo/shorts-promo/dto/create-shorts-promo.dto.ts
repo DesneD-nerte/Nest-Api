@@ -1,4 +1,4 @@
-import { ICreatePromo } from "src/interfaces/ICreatePromo";
+import { ICreatePromo } from "@interfaces/ICreatePromo";
 
 export default class CreateShortsPromoDto implements ICreatePromo {
   entity = "ShortsPromo";

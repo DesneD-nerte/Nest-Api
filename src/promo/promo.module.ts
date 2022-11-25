@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { FileService } from "src/file/file.service";
+import { FileService } from "@root/file/file.service";
 import { PromoService } from "./promo.service";
 
 @Module({

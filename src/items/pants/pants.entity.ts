@@ -1,6 +1,6 @@
 import { Item } from "../item.entity";
 import { Entity, OneToMany } from "typeorm";
-import { PantsPhoto } from "../../photos/pants-photo.entity";
+import { PantsPhoto } from "@root/photos/pants-photo.entity";
 
 @Entity()
 export class Pants extends Item {

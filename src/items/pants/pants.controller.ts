@@ -10,8 +10,6 @@ import {
   UploadedFile,
   UseInterceptors,
 } from "@nestjs/common";
-import { DataSource } from "typeorm";
-import { Pants } from "./pants.entity";
 import { PantsService } from "./pants.service";
 import * as fs from "fs";
 import { join } from "path";

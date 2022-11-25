@@ -1,6 +1,6 @@
 import { Controller, Get, Query, Res, UseInterceptors } from "@nestjs/common";
 import { Response } from "express";
-import { GetListInterceptor } from "src/interceptors/getList.interceptor";
+import { GetListInterceptor } from "@interceptors/getList.interceptor";
 import { ItemsService } from "./items.service";
 
 @Controller("items")

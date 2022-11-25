@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ParamsService } from "src/params/params.service";
 import { DataSource } from "typeorm";
 import { Shorts } from "./shorts.entity";
-import { IGetParams } from "src/interfaces/IGetParams";
+import { IGetParams } from "@interfaces/IGetParams";
 
 @Injectable()
 export class ShortsService {

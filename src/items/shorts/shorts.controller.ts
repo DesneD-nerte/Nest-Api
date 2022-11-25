@@ -1,7 +1,5 @@
 import { Controller, Get, Post, Query, UseInterceptors } from "@nestjs/common";
-import { GetListInterceptor } from "src/interceptors/getList.interceptor";
-import { DataSource } from "typeorm";
-import { Shorts } from "./shorts.entity";
+import { GetListInterceptor } from "@interceptors/getList.interceptor";
 import { ShortsService } from "./shorts.service";
 
 @Controller("items/shorts")

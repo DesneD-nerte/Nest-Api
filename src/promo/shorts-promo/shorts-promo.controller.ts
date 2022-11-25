@@ -1,8 +1,9 @@
 import { Body, Controller, Get, Post, Res, UploadedFile, UseInterceptors } from "@nestjs/common";
-import { ShortsPromoService } from "./shorts-promo.service";
-import { FileInterceptor } from "@nestjs/platform-express";
-import CreatePantsPromoDto from "./dto/create-shorts-promo.dto";
 import { Response } from "express";
+import { FileInterceptor } from "@nestjs/platform-express";
+
+import { ShortsPromoService } from "./shorts-promo.service";
+import CreatePantsPromoDto from "./dto/create-shorts-promo.dto";
 import { GetListInterceptor } from "@interceptors/getList.interceptor";
 
 @Controller("shorts-promo")

@@ -1,5 +1,6 @@
-import { User } from "../users/user.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
+import { User } from "../users/user.entity";
 
 @Entity()
 export class UserPhoto {

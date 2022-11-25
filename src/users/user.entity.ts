@@ -1,7 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { UserPhoto } from "../userPhotos/userPhoto.entity";
-import CreateUserDto from "./dto/create-user.dto";
 import * as bcrypt from "bcryptjs";
+
+import { UserPhoto } from "@root/photos/userPhoto.entity";
+import CreateUserDto from "./dto/create-user.dto";
 
 @Entity()
 export class User {

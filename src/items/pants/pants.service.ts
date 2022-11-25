@@ -1,11 +1,14 @@
 import { Injectable } from "@nestjs/common";
-import { PantsPhoto } from "src/photos/pants-photo.entity";
 import { DataSource } from "typeorm";
+
+import { FileService } from "@root/file/file.service";
+
+import { PantsPhoto } from "@root/photos/pants-photo.entity";
 import { Pants } from "./pants.entity";
-import { FileService } from "src/file/file.service";
 import CreatePantsDto from "./dto/create-pants.dto";
-import { ParamsService } from "src/params/params.service";
-import { IGetParams } from "src/interfaces/IGetParams";
+
+import { ParamsService } from "@root/params/params.service";
+import { IGetParams } from "@interfaces/IGetParams";
 
 @Injectable()
 export class PantsService {

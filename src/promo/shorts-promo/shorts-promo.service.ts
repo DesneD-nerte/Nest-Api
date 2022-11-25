@@ -1,10 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { FileService } from "src/file/file.service";
-import { Pants } from "src/items/pants/pants.entity";
-import { PromoService } from "src/promo/promo.service";
-import { DataSource } from "typeorm";
+import { PromoService } from "../promo.service";
 import CreateShortsPromoDto from "./dto/create-shorts-promo.dto";
-import CreatePantsPromoDto from "./dto/create-shorts-promo.dto";
 import { ShortsPromo } from "./shorts-promo.entity";
 
 @Injectable()

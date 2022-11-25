@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { FileService } from "src/file/file.service";
+import { FileService } from "@root/file/file.service";
 import { ShortsPromoController } from "./shorts-promo.controller";
 import { ShortsPromo } from "./shorts-promo.entity";
 import { ShortsPromoService } from "./shorts-promo.service";

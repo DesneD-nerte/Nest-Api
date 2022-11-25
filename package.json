@@ -86,11 +86,9 @@
     "testEnvironment": "node"
   },
   "_moduleAliases": {
-    "@interfaces/*": [
-      "src/interfaces/*"
-    ],
-    "@interceptors/*": [
-      "src/interceptors/*"
-    ]
+    "@root/": "src",
+    "@interfaces/": "src/interfaces",
+    "@interceptors/": "src/interceptors",
+    "@items/": "src/items"
   }
 }

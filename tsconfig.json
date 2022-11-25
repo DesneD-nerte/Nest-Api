@@ -12,6 +12,11 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "paths": { "@interfaces/*": ["src/interfaces/*"], "@interceptors/*": ["src/interceptors/*"] }
+    "paths": {
+      "@root/*": ["src/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@interceptors/*": ["src/interceptors/*"],
+      "@items/*": ["src/items/*"]
+    }
   }
 }

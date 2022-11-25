@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { InjectDataSource } from "@nestjs/typeorm";
-import { FileService } from "src/file/file.service";
-import { ICreatePromo } from "src/interfaces/ICreatePromo";
-import { PantsPromo } from "src/promo/pants-promo/pants-promo.entity";
-import CreateShortsPromoDto from "src/shorts-promo/dto/create-shorts-promo.dto";
-import { ShortsPromo } from "src/shorts-promo/shorts-promo.entity";
 import { DataSource } from "typeorm";
+import { InjectDataSource } from "@nestjs/typeorm";
+
+import { FileService } from "@root/file/file.service";
+import { ICreatePromo } from "@interfaces/ICreatePromo";
+import { PantsPromo } from "./pants-promo/pants-promo.entity";
+import { ShortsPromo } from "./shorts-promo/shorts-promo.entity";
 
 @Injectable()
 export class PromoService<T extends PantsPromo | ShortsPromo> {

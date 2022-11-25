@@ -1,4 +1,4 @@
-import { Shorts } from "../items/shorts/shorts.entity";
+import { Shorts } from "@items/shorts/shorts.entity";
 import { Entity, ManyToOne } from "typeorm";
 import { Photo } from "./photo.entity";
 

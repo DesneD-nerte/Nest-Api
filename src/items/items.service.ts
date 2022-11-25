@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { PantsService } from "src/items/pants/pants.service";
-import { ShortsService } from "src/items/shorts/shorts.service";
 import { DataSource } from "typeorm";
+
+import { PantsService } from "@items/pants/pants.service";
+import { ShortsService } from "@items/shorts/shorts.service";
 import { ItemsRepository } from "./items.repository";
 
 @Injectable()

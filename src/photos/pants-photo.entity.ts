@@ -1,4 +1,4 @@
-import { Pants } from "../items/pants/pants.entity";
+import { Pants } from "@items/pants/pants.entity";
 import { Entity, ManyToOne } from "typeorm";
 import { Photo } from "./photo.entity";
 

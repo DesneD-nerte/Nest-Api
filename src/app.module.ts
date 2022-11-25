@@ -15,7 +15,7 @@ import { ItemsModule } from "./items/items.module";
 import { FileModule } from "./file/file.module";
 
 import { User } from "./users/user.entity";
-import { UserPhoto } from "./userPhotos/userPhoto.entity";
+import { UserPhoto } from "./photos/userPhoto.entity";
 import { Item } from "./items/item.entity";
 import { Pants } from "./items/pants/pants.entity";
 import { Photo } from "./photos/photo.entity";

@@ -5,5 +5,6 @@ import { ParamsService } from "./params.service";
 
 @Module({
   providers: [ParamsService],
+  exports: [ParamsService],
 })
-export class ParamModule {}
+export class ParamsModule {}
